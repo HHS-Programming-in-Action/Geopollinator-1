@@ -1,0 +1,87 @@
+<!--http://www.html5canvastutorials.com/labs/html5-canvas-world-map-svg-path-with-kineticjs/ -->
+<!DOCTYPE HTML>
+<html>
+  <head>
+  	<link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="button.css">
+  	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="import" href="samplesvg.xml">
+    <script src="Compile.js"></script>
+    <script src="jquery.min.js"></script>
+
+    <link rel="shortcut icon" href="bee.ico"/>
+
+    </head>
+    
+    <body onmousedown="return false">
+        <div id="header">
+            <b><font size="6" face="georgia">Geopollinator</font></b>
+        </div>
+
+
+
+        <div id="headingbackground">
+
+            <p id="message1">Select Countries to Study</p>
+            <p id="count"></p> <p id="wrong"></p>
+            <div id="countriesDiv">
+                <div id="countries"></div>
+            </div>
+            <div id="start" align="center">
+                <button class="btn" id="select" onclick="actualSelectAll();" value="Select All">
+                    Select All
+                </button>
+                <button class="btn" id="deselect" onclick="deselectAll();" value="Deselect All">
+                    Deselect All
+                </button>
+                <button class="btn" onclick="startStudying();" value="Start Studying">
+                    <span id = "startColor">
+                        <font color='#ff0000'>Start Studying</font>
+                    </span>
+                </button>
+                <button class="btn" type="button" onclick="compileMap();" value="Update Map">
+                    Update Map
+                </button>
+            </div>
+            
+            
+
+            <button class="btn" id="stop" onclick="playAgain();" value="Stop Studying">
+                Stop Studying
+            </button>
+            
+            <div id="replay">
+                <button class="btn" id="stop" onclick="playAgain();" value="Play again">
+                    Play again
+                </button>
+            </div>
+            
+            <button class="btn" id="giveup" onclick="giveUp();" value="Skip this country?">
+                Skip this country?
+            </button>
+            <button class="btn" id="center" onclick="center();" value="Return to center">
+                Return to center
+            </button>
+            
+
+            <p id="message"></p>
+
+        </div>
+        <div id="support">
+            <a class="btn" id="center" href="mailto:geopollinator@gmail.com?Subject=Geo Support">
+                <font color="#33f">Send Support Email</font>
+            </a>
+        </div>
+
+        <div id="zoomer" onmousedown="mouseDown(event, this);" onmouseup="mouseUp(event, this);" onmousemove="mouseMove(event, this);" onmousewheel="scroll(event, this);" onmouseover="mouseover(event, this);" onmouseout="mouseout(event, this);">
+        <div id="container"></div>
+        </div>
+
+        <script src="Kinetic.js"></script>
+        <!--<script src="http://www.html5canvastutorials.com/demos/assets/worldMap.js"></script>-->
+        <script src="rapscript.js"></script>
+        <script id="map" src="WorldDrawer.js"></script>
+        <script src="Geopollinator.js"></script>
+
+    </body>
+</html>

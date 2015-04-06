@@ -1,0 +1,99 @@
+body {
+    background-color:#ddd;
+    margin: 0px;
+    height; 100%
+    width; 100%
+    padding: 0px;
+    font-family: 'Open Sans', Arial;
+    padding: 1em 1em 1em;
+}
+p,div {
+	margin: 0px 0px 0px 0px
+} 
+h1 {
+    font-size: 40px;
+    text-align: center;
+}
+#Music {
+	
+}
+
+#container {
+    /*background-image: url('http://www.html5canvastutorials.com/demos/assets/map-background.png');*/
+    height: auto;
+    width: 100%;
+    background-position: 1px 1px;
+    /*background-image:url("background.png");*/
+    border-top-style:solid;
+    border-top-color:black;
+    border-top-width:4px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    position:fixed;
+}
+      
+#countriesDiv {
+    background-color: rgba(255,255,255,0.4);
+    font-family: Georgia;
+    border-radius: 10px;
+    border: solid rgba(255,255,255,0.2) 2px;
+    box-shadow: 0px 0px 6px #000000;
+    overflow:scroll;
+    overflow-x:hidden;
+    height: 250px;
+    width: 100%;
+}
+
+#countries {
+    width: 100%;
+    cursor: pointer;
+    cursor: hand;
+}
+
+#map {
+	position:absolute;
+	z-index: inherit;
+}
+
+.selectedCell {
+    background-color: rgba(0, 0, 0, 0.2);
+    color:white;
+}
+#headingbackground {}
+
+#support {
+    padding: 5px 25px 5px 25px;
+}
+
+#start {
+    padding: 5px 25px 5px 25px;
+}
+
+.countryname {
+    padding: 0.2em 0.2em 0.2em 0.2em;
+}
+
+#start sp {
+    text-align: center;
+    margin: 0;
+    width: 8%;
+    list-style-type: none;
+    text-align: center;
+    display: inline-block;
+}
+
+#header {
+    text-shadow: 0px 0px 5px #000;
+    color: #fff;
+    text-align: center;
+    letter-spacing: 0.4em;
+    padding: 1em 1em 1em;
+
+}
+
+#small{
+    font-size: 11px;
+}
+
+
