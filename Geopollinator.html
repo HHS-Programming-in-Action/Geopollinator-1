@@ -17,9 +17,6 @@
         <div id="header">
             <b><font size="6" face="georgia">Geopollinator</font></b>
         </div>
-
-
-
         <div id="headingbackground">
 
             <p id="message1">Select Countries to Study</p>
@@ -43,36 +40,35 @@
                     Update Map
                 </button>
             </div>
-            
-            
+
+
 
             <button class="btn" id="stop" onclick="playAgain();" value="Stop Studying">
                 Stop Studying
             </button>
-            
+
             <div id="replay">
                 <button class="btn" id="stop" onclick="playAgain();" value="Play again">
                     Play again
                 </button>
             </div>
-            
+
             <button class="btn" id="giveup" onclick="giveUp();" value="Skip this country?">
                 Skip this country?
             </button>
             <button class="btn" id="center" onclick="center();" value="Return to center">
                 Return to center
             </button>
-            
+
 
             <p id="message"></p>
-
         </div>
+
         <div id="support">
             <a class="btn" id="center" href="mailto:geopollinator@gmail.com?Subject=Geo Support">
                 <font color="#33f">Send Support Email</font>
             </a>
         </div>
-
         <div id="zoomer" onmousedown="mouseDown(event, this);" onmouseup="mouseUp(event, this);" onmousemove="mouseMove(event, this);" onmousewheel="scroll(event, this);" onmouseover="mouseover(event, this);" onmouseout="mouseout(event, this);">
         <div id="container"></div>
         </div>
@@ -80,6 +76,8 @@
         <script src="Kinetic.js"></script>
         <!--<script src="http://www.html5canvastutorials.com/demos/assets/worldMap.js"></script>-->
         <script src="rapscript.js"></script>
+        <script src="updated_map.json"></script>
+        
         <script id="map" src="WorldDrawer.js"></script>
         <script src="Geopollinator.js"></script>
 

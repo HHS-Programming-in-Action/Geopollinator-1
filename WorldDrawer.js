@@ -28,20 +28,34 @@ function drawMapWithCountryList(countryList) {
      * variable defined in the worldMap.js asset
      */
     var paths=[];
-  
-    console.log(worldmap.shapes);
-    console.log($("svg"));
-    for(var key in worldmap.shapes) {
+    
+    //for(var key in worldmap.shapes) {
+    for(i = 0; i < new_worldmap.rows.length; i++) {
+        
+        //fetch all of the map data from an online resource
+        //var path = new JSON.parse(fileContent);
+        
+        /* OLD PATH
         var path = new Kinetic.Path({
                                     data: worldmap.shapes[key],
                                     fill: '#eee',
                                     stroke: '#555',
                                     strokeWidth: .2
                                     });
+        */
+        
+        var path = new Kinetic.Path({
+                                    data: new_worldmap.rows[i][26], // returns the SVG format
+                                    fill: '#eee',
+                                    stroke: '#555',
+                                    strokeWidth: .2
+                                    });
+        
         
         paths.push(path);
         
-        path.fullName = worldmap.names[key];
+        //path.fullName = worldmap.names[key];
+        path.fullName = new_worldmap.rows[i][3];
         
         path.on('mouseover', function() {
                 //document.getElementById("countryName").innerHTML=this.fullName;
@@ -79,7 +93,6 @@ function drawMapWithCountryList(countryList) {
     for (var i in paths) {
         var path = paths[i];
         
-        //if (){}
         if (countryList.indexOf(path.fullName)!=-1) {
             
             for (i in path.dataArray) {

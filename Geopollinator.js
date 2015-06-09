@@ -1,3 +1,4 @@
+var new_worldmap = {};
 document.getElementById("replay").hidden=true;
 document.getElementById("deselect").hidden=true;
 document.getElementById("giveup").hidden=true
@@ -49,7 +50,6 @@ function removeByValue(arr, val) {
     }
 }
 
-
 var countryTotal=0
 function clickCountryCell(tableCell) {
     var countryClicked = tableCell.innerHTML.slice(3, tableCell.innerHTML.length-4);
@@ -69,7 +69,6 @@ function clickCountryCell(tableCell) {
     } else{
         document.getElementById("startColor").innerHTML="<font color='#ff0000'>Start Studying<font>";
     }
-    
 }
 
 var mouseIsDown = false;
@@ -84,14 +83,18 @@ function mouseDown(event, obj) {
 }
 
 var position = {'x':0.0, 'y':0.0};
+
 function mouseMove(event, obj) {
     if (mouseIsDown) {
         var currentMousePos = [event.pageX-obj.offsetLeft, event.pageY-obj.offsetTop];
         var xChange = currentMousePos[0]-prevMousePos[0];
         var yChange = currentMousePos[1]-prevMousePos[1];
         var scale = stage.scaleX();
-        position.x+=xChange;
-        position.y+=yChange;
+        position.x += xChange;
+        
+        // inverse because the canvas is fliped
+        position.y += yChange;
+        
         stage.setPosition(position);
         
         //mapLayer.draw();
@@ -110,7 +113,7 @@ function scroll(event, obj) {
     var newScale = currentScale*factor;
     if (newScale > 100) {
     	newScale = 100;
-    	factor=newScale/currentScale;
+    	factor = newScale/currentScale;
     }
     if (newScale < 1) {
     	newScale = 1;
@@ -141,6 +144,7 @@ function mouseover(event, obj) {
 function mouseout(event, obj) {
     document.body.style.overflow='auto';
 }
+
 var i=0
 var countryToFind;
 var countryCount=0
@@ -174,10 +178,12 @@ if(countryTotal>0){
 	document.getElementById("count").innerHTML=countryCount+" out of "+countryTotal
     countryToFind=countriesClicked[i];
     document.getElementById("message").innerHTML="Click on "+countryToFind+".";
-    wrongCount=0
+    wrongCount=0;
     document.getElementById("wrong").innerHTML=wrongCount+" wrong answers."}
 }
+
 var a;
+
 function checkCorrectCountry(countryName) {
     if (countryName==countryToFind) {
         //success
@@ -212,7 +218,9 @@ function checkCorrectCountry(countryName) {
         if(individualWrongCount>9){document.getElementById("giveup").hidden=false}
     }
 }
-function playAgain(){document.getElementById("countriesDiv").hidden=false;
+
+function playAgain(){
+    document.getElementById("countriesDiv").hidden=false;
     document.getElementById("message1").hidden=false;
     document.getElementById("replay").hidden=true;
     document.getElementById("start").hidden=false;
@@ -228,6 +236,12 @@ function playAgain(){document.getElementById("countriesDiv").hidden=false;
     wrongCount=0
     individualWrongCount=0
     i=0
+}
+
+function compileMap(){
+    console.log("Trying to update map...");
+    localStorage['map_updateTime'] = 0;
+    location.reload();
 }
 
 function actualSelectAll() {
@@ -264,3 +278,19 @@ function center(){
         mapLayer.draw();
         topLayer.draw();
 }
+
+$(document).ready(function(){
+    if (localStorage['map'] && (new Date().getTime() - localStorage['map_updateTime']) < 86400000) { /*86,400,000ms  = 24 hours*/
+        new_worldmap = JSON.parse(localStorage['map']);
+        console.log("Using localStorage map");
+    } else {
+        $('body').hide();
+        console.log('Updating map');
+        $.get('https://www.googleapis.com/fusiontables/v2/query?sql=SELECT%20*%20from%201foc3xO9DyfSIF6ofvN0kp2bxSfSeKog5FbdWdQ&key=AIzaSyBh392tzlGTqaZ0tsjXtsgSL-u7UtSjQAI',function(data){
+            new_worldmap = data;
+            localStorage['map'] = JSON.stringify(new_worldmap);
+            localStorage['map_updateTime'] = new Date().getTime();
+            $('body').show();
+        });
+    }
+});
