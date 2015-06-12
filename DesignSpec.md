@@ -1,8 +1,8 @@
 Geopollinator
 =============
 
-##Introduciton:
-The menu of the website shows a list of all the countries. Here the user can choose what countries he or she wants to studdy. Each of the country names are organized in their own divs, with values that show if the contries are selected or not. When a county is clicked on, the div updates its class name. When the user clicks the "Start Studying" button, all of the divs are looped through, and the selected country names are added to a list.
+##Architecture:
+The menu of the website shows a list of all the countries. Here the user can choose what countries he or she wants to study. Each of the country names are organized in their own divs, with values that show if the contries are selected or not. When a county is clicked on, the div updates its class name. When the user clicks the "Start Studying" button, all of the divs are looped through, and the selected country names are added to a list.
 
 There is also a "Select All" button that selects or deselects all of the countries in the list by generating a click on each one of the divs, using jQuery.
 
