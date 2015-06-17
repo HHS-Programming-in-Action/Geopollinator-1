@@ -14,14 +14,14 @@ This function is called every time the user clickes on the "Update Map" button, 
 The map data is pulled directly from a google api fusion-table. This returns a json format list of information about countries names and locations. This table is updated regularly, and is used by google maps as well.
 
 ###WorldDrawer.js:
-Returns an object which has:
-#### - stage:
+Takes in information from the fusion table found in local storage, and converts it to an object with four different calls:
+###### - stage:
   Background which contains the mapLayer
-#### - scale:
+###### - scale:
   Contains the size of the stage
-#### - paths:
+###### - paths:
   Contains all of the svg strings and the color and stroke of the line
-#### - mapLayer:
+###### - mapLayer:
   Countains all of the paths and creates a visual SVG
 
 ###Geopollinator.html:
